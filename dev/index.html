@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>&lt;sf-animated-text> Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script type="module" src="../sf-animated-text.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <script type="module">
+        import {SfISelect} from 'https://unpkg.com/sf-i-select@1.0.56/sf-i-select.js?module';
+        import {SfISubSelect} from 'https://unpkg.com/sf-i-sub-select@1.0.73/sf-i-sub-select.js?module';
+    </script>
+    <style>
+      
+      body {
+        background-color: #efefef;
+        margin: 0px;
+        font-family: 'Source Sans Pro';
+      }
+      
+      sf-animated-text:not(:defined) {
+        display: none;
+      }
+
+      .d-flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .w-30 {
+        width: 30%;
+      }
+
+      .w-5 {
+        width: 5%;
+      }
+
+      .w-47-5 {
+        width: 47.5%;
+      }
+
+      .w-65 {
+        width: 65%;
+      }
+
+      .w-100-m-0 {
+        width: 100%;
+      }
+
+      .w-33 {
+        width: 30%;
+      }
+
+      .w-66 {
+        width: 62%;
+      }
+
+      .w-50 {
+        width: 46%;
+      }
+      .w-100 {
+        width: 94%;
+      }
+
+      .justify-center {
+        justify-content: center;
+      }
+
+      .align-end {
+        align-items: flex-end;
+      }
+
+      label {
+        color: #666;
+      }
+
+      input {
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        background: #efefef;
+        box-shadow: inset 2px 2px 6px rgba(5, 5, 5, 0.2);
+        border-top: solid 1px rgba(255, 255, 255, 0.8);
+        border-left: solid 1px rgba(255, 255, 255, 0.8);
+        border-bottom: solid 1px rgba(255, 255, 255, 0.8);
+        border-right: solid 1px rgba(255, 255, 255, 0.8);
+        transition: 0.3s;
+      }
+     
+      input:focus {
+        outline-color: #e8e8e8;
+        background: #e8e8e8;
+        box-shadow: inset 20px 20px 60px #c5c5c5,
+          inset -20px -20px 60px #ffffff;
+        transition: 0.3s;
+      }
+
+      sf-animated-text::part(button-icon) {
+
+        border-width: 0px;      
+        border-radius: 5px;
+        color: #666;
+        background: #efefef;
+        box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.25), -1px -1px 10px 0 rgba(255, 255, 255, 0.6);
+        border-top: solid 1px rgba(255, 255, 255, 0.3);
+        border-left: solid 1px rgba(255, 255, 255, 0.3);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        border-right: solid 1px rgba(0, 0, 0, 0.1);
+        
+      }
+
+      sf-animated-text::part(button-icon-small) {
+
+        border-width: 0px;      
+        border-radius: 5px;
+        color: #666;
+        background: #efefef;
+        box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.25), -1px -1px 10px 0 rgba(255, 255, 255, 0.6);
+        border-top: solid 1px rgba(255, 255, 255, 0.3);
+        border-left: solid 1px rgba(255, 255, 255, 0.3);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        border-right: solid 1px rgba(0, 0, 0, 0.1);
+
+      }
+
+      sf-animated-text::part(badge) {
+
+        color: #666;
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        border-right: solid 1px rgba(0, 0, 0, 0.1);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 10px;
+        margin-top: -8px;
+
+      }
+
+      sf-animated-text::part(title) {
+
+        font-weight: 400;
+
+      }
+
+      sf-i-select::part(input-label),
+      sf-i-sub-select::part(input-label),
+      sf-animated-text::part(input-label) {
+        color: #666;
+      }
+
+      sf-i-select::part(input-select),
+      sf-i-sub-select::part(input-select),
+      sf-animated-text::part(input-select) {
+
+        border-width: 0px;      
+        border-radius: 5px;
+        color: #666;
+        background: #efefef;
+        box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.25), -1px -1px 10px 0 rgba(255, 255, 255, 0.6);
+        border-top: solid 1px rgba(255, 255, 255, 0.3);
+        border-left: solid 1px rgba(255, 255, 255, 0.3);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        border-right: solid 1px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+
+      }
+
+      sf-i-select::part(input-select-multi),
+      sf-i-sub-select::part(input-select-multi) {
+        font-weight: 400;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        background: #efefef;
+        box-shadow: inset 2px 2px 6px rgba(5, 5, 5, 0.2);
+        border-top: solid 1px rgba(255, 255, 255, 0.8);
+        border-left: solid 1px rgba(255, 255, 255, 0.8);
+        border-bottom: solid 1px rgba(255, 255, 255, 0.8);
+        border-right: solid 1px rgba(255, 255, 255, 0.8);
+        transition: 0.3s;
+      }
+
+      sf-animated-text::part(input) {
+        font-weight: 400;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        background: #efefef;
+        box-shadow: inset 2px 2px 6px rgba(5, 5, 5, 0.2);
+        border-top: solid 1px rgba(255, 255, 255, 0.8);
+        border-left: solid 1px rgba(255, 255, 255, 0.8);
+        border-bottom: solid 1px rgba(255, 255, 255, 0.8);
+        border-right: solid 1px rgba(255, 255, 255, 0.8);
+        transition: 0.3s;
+      }
+     
+      sf-animated-text::part(input:focus) {
+        outline-color: #e8e8e8;
+        background: #e8e8e8;
+        box-shadow: inset 20px 20px 60px #c5c5c5,
+          inset -20px -20px 60px #ffffff;
+        transition: 0.3s;
+      }
+
+      sf-animated-text::part(results-title) {
+        color: #444;
+        font-weight: 400;
+      }
+      
+      sf-animated-text::part(td-head) {
+        color: #888;
+        font-weight: 400;
+        padding: 5px;
+        vertical-align: middle;
+      }
+
+      sf-animated-text::part(td-body) {
+        color: #555;
+        font-weight: 400;
+        padding: 5px;
+        vertical-align: middle;
+      }
+
+      sf-animated-text::part(td-action) {
+        color: #888;
+        font-weight: 400;
+        padding: 5px;
+        background-color: #efefef;
+        vertical-align: middle;
+      }
+
+      sf-animated-text::part(button) {
+        color: #666;
+        background: #efefef;
+        box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.25), -1px -1px 10px 0 rgba(255, 255, 255, 0.6);
+        border-top: solid 1px rgba(255, 255, 255, 0.3);
+        border-left: solid 1px rgba(255, 255, 255, 0.3);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        border-right: solid 1px rgba(0, 0, 0, 0.1);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 5px;
+      }
+
+      
+
+      sf-animated-text::part(button-lg) {
+        color: #666;
+        background: #efefef;
+        box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.25), -1px -1px 10px 0 rgba(255, 255, 255, 0.6);
+        border-top: solid 1px rgba(255, 255, 255, 0.3);
+        border-left: solid 1px rgba(255, 255, 255, 0.3);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        border-right: solid 1px rgba(0, 0, 0, 0.1);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        font-size: 110%;
+      }
+
+      sf-animated-text::part(button-lg):not(active){
+        color: #666;
+        background: #bbbbbb;
+        box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.25), -1px -1px 10px 0 rgba(255, 255, 255, 0.6);
+        border-top: solid 1px rgba(255, 255, 255, 0.3);
+        border-left: solid 1px rgba(255, 255, 255, 0.3);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        border-right: solid 1px rgba(0, 0, 0, 0.1);
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-radius: 5px;
+        font-size: 95%;
+      }
+
+
+    </style>
+  </head>
+  <body>
+
+    <!-- <sf-animated-text 
+      texts="[&quot;Making GRC Achievable&quot;, &quot;Making GRC Achievabl&quot;, &quot;Making GRC Achievab&quot;, &quot;Making GRC Achieva&quot;, &quot;Making GRC Achiev&quot;, &quot;Making GRC Achie&quot;, &quot;Making GRC Achi&quot;, &quot;Making GRC Ach&quot;, &quot;Making GRC Ac&quot;, &quot;Making GRC A&quot;, &quot;Making GRC&quot;, &quot;Making GRC A&quot;, &quot;Making GRC Ac&quot;, &quot;Making GRC Acc&quot;, &quot;Making GRC Acce&quot;, &quot;Making GRC Acces&quot;, &quot;Making GRC Access&quot;, &quot;Making GRC Accessi&quot;, &quot;Making GRC Accessib&quot;, &quot;Making GRC Accessibl&quot;, &quot;Making GRC Accessible&quot;, &quot;Making GRC Accessibl&quot;, &quot;Making GRC Accessib&quot;, &quot;Making GRC Accessi&quot;, &quot;Making GRC Access&quot;, &quot;Making GRC Acces&quot;, &quot;Making GRC Acce&quot;, &quot;Making GRC Acc&quot;, &quot;Making GRC Ac&quot;, &quot;Making GRC A&quot;, &quot;Making GRC&quot;, &quot;aking GRC&quot;, &quot;king GRC&quot;, &quot;ing GRC&quot;, &quot;ng GRC&quot;, &quot;g GRC&quot;, &quot;GRC&quot;, &quot;GRC A&quot;, &quot;GRC Au&quot;, &quot;GRC Aut&quot;, &quot;GRC Auto&quot;, &quot;GRC Autom&quot;, &quot;GRC Automa&quot;, &quot;GRC Automat&quot;, &quot;GRC Automati&quot;, &quot;GRC Automatio&quot;, &quot;GRC Automation&quot;, &quot;GRC Automatio&quot;, &quot;GRC Automati&quot;, &quot;GRC Automat&quot;, &quot;GRC Automa&quot;, &quot;GRC Autom&quot;, &quot;GRC Auto&quot;, &quot;GRC Aut&quot;, &quot;GRC Au&quot;, &quot;GRC A&quot;, &quot;GRC&quot;, &quot;O GRC&quot;, &quot;On GRC&quot;, &quot;One GRC&quot;, &quot;One P GRC&quot;, &quot;One Pl GRC&quot;, &quot;One Pla GRC&quot;, &quot;One Plat GRC&quot;, &quot;One Platf GRC&quot;, &quot;One Platfo GRC&quot;, &quot;One Platfor GRC&quot;, &quot;One Platform GRC&quot;, &quot;One Platform F GRC&quot;, &quot;One Platform Fo GRC&quot;, &quot;One Platform For GRC&quot;, &quot;One Platform For E GRC&quot;, &quot;One Platform For Ev GRC&quot;, &quot;One Platform For Eve GRC&quot;, &quot;One Platform For Ever GRC&quot;, &quot;One Platform For Every GRC&quot;, &quot;One Platform For Everyt GRC&quot;, &quot;One Platform For Everyth GRC&quot;, &quot;One Platform For Everythi GRC&quot;, &quot;One Platform For Everythin GRC&quot;, &quot;One Platform For Everything GRC&quot;, &quot;One Platform For GRC&quot;, &quot;One Platform GRC&quot;, &quot;GRC&quot;, &quot;Making GRC&quot;, &quot;Making GRC Achievable&quot;]"
+      delays="[64,1,1,1,1,1,1,1,1,1,8,1,1,1,1,1,1,1,1,1,64,1,1,1,1,1,1,1,1,1,8,1,1,1,1,1,8,1,1,1,1,1,1,1,1,1,64,1,1,1,1,1,1,1,1,1,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,64,2,2,4,4]">
+
+    </sf-animated-text> -->
+
+    <sf-animated-text 
+      mode="replace"
+      texts="[&quot;Prevent Compliance Headaches, Avoid Costly Penalties&quot;, &quot;Flagg Risks Before They Become Catastrophies&quot;, &quot;Prevent Governance Missteps, Enhance Decision-Making&quot;]"
+      replaceText="                                        "
+      delays="[64,64,64]">
+
+    </sf-animated-text>
+    
+    <script>
+      
+    </script>
+  </body>
+</html>
